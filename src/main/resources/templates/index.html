@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <!-- Main style sheet -->
+    <link href="../../static/css/main.css" media="screen" rel="stylesheet" th:href="@{/css/main.css}"/>
+
+    <!-- Bootstrap 3 -->
+    <link href="../../static/css/bootstrap.min.css" media="screen" rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="" th:href="@{/}">Daftar Karwayan <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"th:href="@{/addkaryawan}">Tambah Karyawan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tambah Jabatan</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="center container">
+    <div th:if="${not #lists.isEmpty(karyawans)}">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nama Karyawan</th>
+                <th scope="col">Tahun Masuk</th>
+                <th scope="col">Gaji</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="karyawan : ${karyawans}">
+                <td th:text="${karyawan.nama}"></td>
+                <td th:text="${karyawan.jumlahGaji}"></td>
+                <td th:text="${karyawan.tahunMasuk}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

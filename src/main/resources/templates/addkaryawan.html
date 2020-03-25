@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Karyawan</title>
+    <link href="../../static/css/main.css" media="screen" rel="stylesheet" th:href="@{/css/main.css}"/>
+
+    <!-- Bootstrap 3 -->
+    <link href="../../static/css/bootstrap.min.css" media="screen" rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="#" th:href="@{/}">Daftar Karwayan</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/" th:href="@{/addkaryawan}">Tambah Karyawan <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tambah Jabatan</a>
+            </li>
+
+        </ul>
+    </div>
+
+
+</nav>
+
+<div class="center container">
+    <form th:object="${karyawan}" th:action="@{/addkaryawan}" method="post">
+        <div class="form-group">
+            <label for="inputNama">Nama Karyawan</label>
+            <input type="text" class="form-control" id="inputNama" aria-describedby="namahelp" th:field="*{nama}">
+            <small id="namahelp" class="form-text text-muted">Nama Lengkap Karyawan</small>
+        </div>
+        <div class="form-group">
+            <label for="inputTahunMasuk">Tahun Masuk</label>
+            <input type="text" class="form-control" id="inputTahunMasuk" th:field="*{tahunMasuk}">
+        </div>
+        <div class="form-group">
+            <label for="inputGaji">Gaji</label>
+            <input type="text" class="form-control" id="inputGaji" th:field="*{jumlahGaji}">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>
