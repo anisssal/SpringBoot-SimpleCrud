@@ -1,9 +1,6 @@
 package com.anis.crud.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created By Anis
@@ -16,10 +13,20 @@ public class Karyawan {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id ;
 
+    @Version
+    @Column (name = "opt_version" , columnDefinition = "integer default 0")
+    private Integer version ;
     private String nama ;
     private String jumlahGaji ;
     private String tahunMasuk ;
 
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 
     public int getId() {
         return id;

@@ -38,4 +38,18 @@ public class KaryawanDAO implements KaryawanService {
         entityManager.getTransaction().commit();
         return karyawanSaved;
     }
+
+    @Override
+    public Karyawan findKaryawanById(Integer id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return entityManager.find(Karyawan.class, id);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.remove(entityManager.find(Karyawan.class, id));
+        entityManager.getTransaction().commit();
+    }
 }

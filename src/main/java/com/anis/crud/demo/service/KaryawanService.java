@@ -14,4 +14,8 @@ public interface KaryawanService {
     List getAllKaryawan();
 
     Karyawan saveOrUpdate(Karyawan karyawan);
+
+    Karyawan findKaryawanById(Integer id);
+
+    void delete(Integer id);
 }

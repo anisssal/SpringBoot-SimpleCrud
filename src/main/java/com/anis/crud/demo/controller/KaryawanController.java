@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,7 +33,7 @@ public class KaryawanController {
         return "index";
     }
 
-    @RequestMapping(value = "addkaryawan" , method = RequestMethod.GET)
+    @GetMapping(value = "addkaryawan" )
     public String addKaryawan(Model model ) {
         model.addAttribute("karyawan", new Karyawan());
         return "addkaryawan";
@@ -42,7 +43,19 @@ public class KaryawanController {
     public String insertKaryawan(Karyawan karyawan) {
         karyawanService.saveOrUpdate(karyawan);
         return "redirect:/";
+    }
 
+
+    @RequestMapping(value = "editdata/karyawan/{id}")
+    public String editData(@PathVariable("id") Integer id , Model model ) {
+        model.addAttribute("karyawan", karyawanService.findKaryawanById(id));
+        return "addkaryawan";
+    }   
+
+    @RequestMapping(value = "delete/karyawan/{id}")
+    public String editData(@PathVariable("id") Integer id  ) {
+        karyawanService.delete(id);
+        return "redirect:/";
     }
 
 

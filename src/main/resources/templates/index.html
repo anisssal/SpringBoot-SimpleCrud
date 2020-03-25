@@ -36,6 +36,7 @@
                 <th scope="col">Nama Karyawan</th>
                 <th scope="col">Tahun Masuk</th>
                 <th scope="col">Gaji</th>
+                <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -43,6 +44,9 @@
                 <td th:text="${karyawan.nama}"></td>
                 <td th:text="${karyawan.jumlahGaji}"></td>
                 <td th:text="${karyawan.tahunMasuk}"></td>
+                <td ><a href="#" class="badge badge-dark" th:href="${'/editdata/karyawan/'+karyawan.id}">Edit</a>
+                    <a href="#" class="badge badge-danger" th:href="${'/delete/karyawan/'+karyawan.id}">Delete</a>
+                </td>
             </tr>
 
             </tbody>
